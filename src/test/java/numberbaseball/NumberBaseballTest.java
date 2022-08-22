@@ -10,6 +10,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import numberbaseball.domain.NumberBaseball;
+
 class NumberBaseballTest {
 
 	NumberBaseball baseball = new NumberBaseball();
@@ -19,7 +21,7 @@ class NumberBaseballTest {
 		baseball.setUp();
 	}
 
-	@DisplayName("숫자가 중복되는 경우 true 를 반환한다. ")
+	@DisplayName("숫자가 중복 되는 경우 true 를 반환 한다. ")
 	@ParameterizedTest
 	@CsvSource(value = {"339:true", "121:true", "123:false", "456:false", "777:true", "198:false"}, delimiter = ':')
 	void has_Duplicate_Num_Then_True(String input, boolean expected) {

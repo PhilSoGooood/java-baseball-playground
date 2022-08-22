@@ -1,10 +1,10 @@
-package numberbaseball;
+package numberbaseball.domain;
 
 public class NumberBaseball {
 
 	public final int[] answer = new int[3];
 
-	void setUp() {
+	public void setUp() {
 		for (int i = 0; i < 3; i++) {
 			pickRandomNumber(i);
 		}
