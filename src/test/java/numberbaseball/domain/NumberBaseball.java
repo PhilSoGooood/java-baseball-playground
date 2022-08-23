@@ -2,22 +2,28 @@ package numberbaseball.domain;
 
 public class NumberBaseball {
 
-	public final int[] answer = new int[3];
+	private final int[] answer = new int[3];
 
-	public void setUp() {
+	public NumberBaseball() {
+		setUp();
+	}
+	public int[] getAnswer() {
+		return answer;
+	}
+	private void setUp() {
 		for (int i = 0; i < 3; i++) {
-			pickRandomNumber(i);
+			answer[i] = pickRandomNumber(i);
 		}
 	}
 
-	private void pickRandomNumber(int idx) {
+	private int pickRandomNumber(int idx) {
 		int num = 0;
 		boolean flag = true;
 		while (flag) {
 			num = (int)(Math.random() * 9) + 1;
 			flag = hasDuplicateNumber(idx, num);
 		}
-		answer[idx] = num;
+		return num;
 	}
 
 	private boolean hasDuplicateNumber(int idx, int num) {

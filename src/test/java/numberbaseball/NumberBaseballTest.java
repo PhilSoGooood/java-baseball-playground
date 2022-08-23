@@ -14,11 +14,11 @@ import numberbaseball.domain.NumberBaseball;
 
 class NumberBaseballTest {
 
-	NumberBaseball baseball = new NumberBaseball();
+	NumberBaseball baseball;
 
 	@BeforeEach
 	void setBaseball() {
-		baseball.setUp();
+		baseball = new NumberBaseball();
 	}
 
 	@DisplayName("숫자가 중복 되는 경우 true 를 반환 한다. ")
@@ -58,8 +58,8 @@ class NumberBaseballTest {
 	@ParameterizedTest
 	@ValueSource(ints = {0, 1, 2})
 	void numRangeTest(int idx) {
-		int num = baseball.answer[idx];
+		int num = baseball.getAnswer()[idx];
 		assertThat(num).isBetween(1, 9);
-		System.out.println(Arrays.toString(baseball.answer));
+		System.out.println(Arrays.toString(baseball.getAnswer()));
 	}
 }
