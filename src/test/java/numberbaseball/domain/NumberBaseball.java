@@ -4,13 +4,10 @@ public class NumberBaseball {
 
 	private final int[] answer = new int[3];
 
-	public NumberBaseball() {
-		setUp();
-	}
 	public int[] getAnswer() {
 		return answer;
 	}
-	private void setUp() {
+	public void setUp() {
 		for (int i = 0; i < 3; i++) {
 			answer[i] = pickRandomNumber(i);
 		}

@@ -19,4 +19,8 @@ public class InputView {
 		}
 		return numbers;
 	}
+	public int requestContinue() throws IOException {
+		System.out.println(RESTART_OR_QUIT.getMessage());
+		return Integer.parseInt(br.readLine());
+	}
 }
