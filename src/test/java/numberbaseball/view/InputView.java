@@ -6,6 +6,8 @@ import static numberbaseball.view.RequestMessage.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -35,10 +37,29 @@ public class InputView {
 	}
 
 	private boolean checkNumber(String[] input) {
-		if (input.length != 3) {
-			System.out.println(NOT_THREE_NUMBERS.getMessage());
+		if (!isDigit(input)) {
+			return false;
+		}
+		if (checkLength(input)) {
 			return false;
 		}
 		return true;
+	}
+
+	private boolean checkLength(String[] input) {
+		if (input.length != 3) {
+			System.out.println(NOT_THREE_NUMBERS.getMessage());
+			return true;
+		}
+		return false;
+	}
+
+	private boolean isDigit(String[] input) {
+		String strInput = String.join("", input);
+		boolean result = strInput.chars().allMatch(Character::isDigit);
+		if (!result) {
+			System.out.println(NOT_NUMBERS.getMessage());
+		}
+		return result;
 	}
 }

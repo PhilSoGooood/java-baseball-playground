@@ -1,7 +1,7 @@
 package numberbaseball.exception;
 
 public enum ExceptionMessage {
-	NOT_THREE_NUMBERS("세자리 숫자를 입력해주세요");
+	NOT_THREE_NUMBERS("세자리 숫자를 입력해주세요"), NOT_NUMBERS("숫자만 입력해주세요");
 
 	private final String message;
 
