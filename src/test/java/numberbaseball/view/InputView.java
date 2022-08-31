@@ -6,8 +6,6 @@ import static numberbaseball.view.RequestMessage.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -38,9 +36,15 @@ public class InputView {
 
 	private boolean checkNumber(String[] input) {
 		if (!isDigit(input)) {
+			System.out.println(NOT_NUMBERS.getMessage());
 			return false;
 		}
 		if (checkLength(input)) {
+			System.out.println(NOT_THREE_NUMBERS.getMessage());
+			return false;
+		}
+		if (checkDuplicateNumber(input)) {
+			System.out.println(DUPLICATE_NUMBER.getMessage());
 			return false;
 		}
 		return true;
@@ -48,7 +52,6 @@ public class InputView {
 
 	private boolean checkLength(String[] input) {
 		if (input.length != 3) {
-			System.out.println(NOT_THREE_NUMBERS.getMessage());
 			return true;
 		}
 		return false;
@@ -56,10 +59,28 @@ public class InputView {
 
 	private boolean isDigit(String[] input) {
 		String strInput = String.join("", input);
-		boolean result = strInput.chars().allMatch(Character::isDigit);
-		if (!result) {
-			System.out.println(NOT_NUMBERS.getMessage());
+		return strInput.chars().allMatch(Character::isDigit);
+	}
+
+	private boolean checkDuplicateNumber(String[] input) {
+		boolean result = false;
+		int i=0;
+		while (!result && i < input.length) {
+			result = hasDuplicateNumber(i, input[i], input);
+			i++;
 		}
 		return result;
+	}
+	private boolean hasDuplicateNumber(int idx, String num, String[] input) {
+		boolean result = false;
+		int i=0;
+		while (!result && i < idx){
+			result = isSameNumber(num, input[i]);
+			i++;
+		}
+		return result;
+	}
+	private boolean isSameNumber(String x, String y) {
+		return x.equals(y);
 	}
 }
