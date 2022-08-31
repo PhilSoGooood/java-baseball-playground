@@ -47,6 +47,10 @@ public class InputView {
 			System.out.println(DUPLICATE_NUMBER.getMessage());
 			return false;
 		}
+		if (checkRange(input)) {
+			System.out.println(OVER_RANGE.getMessage());
+			return false;
+		}
 		return true;
 	}
 
@@ -82,5 +86,16 @@ public class InputView {
 	}
 	private boolean isSameNumber(String x, String y) {
 		return x.equals(y);
+	}
+
+	private boolean checkRange(String[] input) {
+		boolean result = true;
+		int i = 0;
+		while (result && i < input.length) {
+			char num = input[i].charAt(0);
+			result = ('1' <= num && num <= '9');
+			i++;
+		}
+		return !result;
 	}
 }
